@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 const express = require('express');
-const multer = require('multer');
+//const multer = require('multer');
 const AWS = require('aws-sdk');
 const app = express();
 const port = 3000;
@@ -10,16 +10,13 @@ const port = 3000;
 const s3 = new AWS.S3();
 
 // Zähler für den Dateinamen
-let fileCounter = 1;
+let fileCounter = 11;
 
-const storage = multer.memoryStorage();  // Datei wird im Arbeitsspeicher gehalten
 
-const upload = multer({ storage: storage });
-
-app.post('/upload', upload.single('excelFile'), async (req, res) => {
+app.post('/upload', async (req, res) => {
   try {
     // Erstelle den Dateinamen mit einer incrementierten Zahl
-    const fileName = `file${fileCounter++}.xlsx`;
+    const fileName = `file${fileCounter++}.json`;
 
     // Lade die Datei in den S3-Bucket hoch
     await s3
