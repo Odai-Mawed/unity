@@ -3,6 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const AWS = require('aws-sdk');
 const bodyParser = require('body-parser');
+const path = require('path');
 
 const app = express();
 const port = 3000;
