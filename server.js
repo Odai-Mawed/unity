@@ -15,6 +15,7 @@ app.use(express.static(path.join(__dirname, '..', 'unityBuild', 'Build' )));
 
 // Route für /unity
 app.get('/unity', (req, res) => {
+  console.log("ich habe eine anfrage bekommen")
   res.sendFile(path.join(__dirname, '..', 'unityBuild', 'Build', 'index.html'));
 });
 
@@ -22,13 +23,6 @@ const s3 = new AWS.S3();
 
 let fileCounter = 1;
 
-
-app.get('/unity', (req, res)=>{
-
-  
-
-  
-})
 
 app.post('/upload', async (req, res) => {
   try {
