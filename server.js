@@ -13,6 +13,11 @@ app.use(bodyParser.text({ type: 'application/json' }));
 // Statische Dateien im Verzeichnis "unityBuild/Build" servieren
 app.use(express.static(path.join(__dirname, '..', 'unityBuild', 'Build' )));
 
+app.get("/", (req, res)=>{
+
+  res.send("hallo auf meiner website")
+})
+
 // Route für /unity
 app.get('/unity', (req, res) => {
   console.log("ich habe eine anfrage bekommen")
