@@ -9,9 +9,25 @@ const port = 3000;
 
 app.use(bodyParser.text({ type: 'application/json' }));
 
+// Statische Dateien im Verzeichnis "unityBuild/Build" servieren
+app.use(express.static(path.join(__dirname, '..', 'unityBuild', 'Build' )));
+
+// Route für /unity
+app.get('/unity', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'unityBuild', 'Build', 'index.html'));
+});
+
 const s3 = new AWS.S3();
 
 let fileCounter = 1;
+
+
+app.get('/unity', (req, res)=>{
+
+  
+
+  
+})
 
 app.post('/upload', async (req, res) => {
   try {
